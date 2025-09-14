@@ -1,0 +1,68 @@
+name: FTP deploy on release publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: {}  # optional: lets you run it manually
+
+concurrency:
+  group: ftp-deploy-release
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      # Deploy source directory (set to a build folder like 'dist' if you build)
+      LOCAL_DIR: .
+      # Remote directory on your server
+      SERVER_DIR: /dayzxb_missions/dayzOffline.chernarusplus
+      # The tag being deployed (available on release events)
+      RELEASE_TAG: ${{ github.event.release.tag_name }}
+
+    steps:
+      - name: Show context
+        run: |
+          echo "Release tag: ${RELEASE_TAG:-<none>}"
+          echo "Event: ${{ github.event_name }}"
+
+      - name: Checkout release tag (or default branch if manual run)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # If triggered by a release event, checkout that tag; otherwise checkout the repo default
+          ref: ${{ github.event.release.tag_name || '' }}
+
+      # Optional: build your project for production
+      # - name: Build
+      #   run: |
+      #     npm ci
+      #     npm run build
+      #   # If you build, set LOCAL_DIR above to your output (e.g., 'dist')
+
+      - name: FTP Deploy (publish)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          # Use ftps if your host supports it (set via repo secret), else defaults to ftp
+          protocol: ${{ secrets.FTP_PROTOCOL || 'ftp' }}
+          port: ${{ secrets.FTP_PORT || 21 }}
+          local-dir: ${{ env.LOCAL_DIR }}/
+          server-dir: ${{ env.SERVER_DIR }}/
+          dangerous-clean-slate: false   # don't delete remote files
+          exclude: |
+            .git/**
+            **/.git/**
+            .github/**
+            **/.github/**
+            node_modules/**
+            **/node_modules/**
+            .DS_Store
+            .env
+            README.md
+            **/*.map

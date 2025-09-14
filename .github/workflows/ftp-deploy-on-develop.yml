@@ -1,0 +1,70 @@
+name: FTP deploy on develop
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Show what would upload (no changes)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: ftp-deploy-develop
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      # Change this if you deploy a built folder (e.g., 'dist' or 'build')
+      LOCAL_DIR: .
+      # Remote target directory on the server – typically the web root or subfolder
+      SERVER_DIR: /dayzxb_missions/dayzOffline.chernarusplus
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Optional: build your project first (uncomment and customize)
+      # - name: Build
+      #   run: |
+      #     npm ci
+      #     npm run build
+      #   env:
+      #     NODE_OPTIONS: --max-old-space-size=4096
+      #   # And set env.LOCAL_DIR above to 'dist' (or your build output)
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.DEV_FTP_SERVER }}
+          username: ${{ secrets.DEV_FTP_USER }}
+          password: ${{ secrets.DEV_FTP_PASS }}
+          # Protocol options: 'ftp' or 'ftps'
+          protocol: ${{ secrets.DEV_FTP_PROTOCOL || 'ftp' }}
+          port: ${{ secrets.DEV_FTP_PORT || 21 }}
+          local-dir: ${{ env.LOCAL_DIR }}/
+          server-dir: ${{ env.SERVER_DIR }}/
+          # Only upload changed files; do NOT wipe server directory
+          dangerous-clean-slate: false
+          # Set to 'true' when running from the manual dispatch with dry_run input
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
+          # Exclude unwanted files and folders
+          exclude: |
+            .git/**
+            **/.git/**
+            .github/**
+            **/.github/**
+            node_modules/**
+            **/node_modules/**
+            .DS_Store
+            .env
+            README.md
+            **/*.map
