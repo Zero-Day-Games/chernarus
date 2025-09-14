@@ -2,13 +2,16 @@
 	"version": 123,
 	"GeneralData":
 	{
-		"disableBaseDamage": false,
+		"disableBaseDamage": true,
 		"disableContainerDamage": false,
-		"disableRespawnDialog": false,
+		"disableRespawnDialog": true,
 		"disableRespawnInUnconsciousness": false
 	},
     "PlayerData":
 	{
+		"spawnGearPresetFiles": [
+			"./custom/loadout.json"
+		],
 		"disablePersonalLight": false,
 		"StaminaData":
 		{
