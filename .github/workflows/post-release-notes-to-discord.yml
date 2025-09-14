@@ -21,7 +21,7 @@ jobs:
       contents: read
 
     env:
-      WEBHOOK_URL: ${{ secrets.DISCORD_RELEASE_WEBHOOK_URL }}
+      WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
       ROLE_ID: ${{ secrets.DISCORD_ROLE_ID }} # optional: role ID to mention
       THREAD_ID: ${{ secrets.DISCORD_WEBHOOK_THREAD_ID }} # optional: post into specific thread
 
