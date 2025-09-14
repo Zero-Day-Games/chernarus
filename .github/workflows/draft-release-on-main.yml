@@ -1,4 +1,3 @@
-# .github/workflows/draft-release-on-main.yml
 name: Draft Release on main updates
 
 on:
@@ -33,33 +32,25 @@ jobs:
             const cmp = (a,b) => a.major-b.major || a.minor-b.minor || a.patch-b.patch;
             const incPatch = (v) => ({ major:v.major, minor:v.minor, patch:v.patch+1 });
 
-            // ---------- 1) Find highest existing semver (from releases + tags) ----------
+            // ---------- 1) Collect releases & tags ----------
             const releases = await github.paginate(github.rest.repos.listReleases, { owner, repo, per_page: 100 });
             const tags = await github.paginate(github.rest.repos.listTags, { owner, repo, per_page: 100 });
 
-            let allVers = [];
-            for (const r of releases) {
-              const v = parseVer(r.tag_name); if (v) allVers.push(v);
-            }
-            for (const t of tags) {
-              const v = parseVer(t.name); if (v) allVers.push(v);
-            }
+            // Highest existing semver across releases & tags (for when we need to CREATE a new draft)
+            const allVers = [];
+            for (const r of releases) { const v = parseVer(r.tag_name); if (v) allVers.push(v); }
+            for (const t of tags)     { const v = parseVer(t.name);     if (v) allVers.push(v); }
 
-            let nextVer = { major:1, minor:0, patch:0 };
+            let baseNext = { major:1, minor:0, patch:0 };
             if (allVers.length) {
               allVers.sort(cmp);
-              nextVer = incPatch(allVers[allVers.length - 1]);
+              baseNext = incPatch(allVers[allVers.length - 1]); // bump only when creating new draft
             }
-
-            const nextTag = `v${nextVer.major}.${nextVer.minor}.${nextVer.patch}`;
-            const nextName = nextTag;
+            const computedNextTag = `v${baseNext.major}.${baseNext.minor}.${baseNext.patch}`;
 
             // ---------- 2) Choose base for notes ONLY from real git tags ----------
-            // (Use the highest semver tag that actually exists as a ref.)
             const tagVers = [];
-            for (const t of tags) {
-              const v = parseVer(t.name); if (v) tagVers.push({ v, name: t.name });
-            }
+            for (const t of tags) { const v = parseVer(t.name); if (v) tagVers.push({ v, name: t.name }); }
             tagVers.sort((a,b) => cmp(a.v,b.v));
             const lastRealTag = tagVers.length ? tagVers[tagVers.length - 1].name : null;
 
@@ -76,7 +67,7 @@ jobs:
                 );
                 header = `Changes since ${lastRealTag}:`;
               } else {
-                // No real tag yet → list latest commits on main
+                // No prior real tag; list latest commits on main
                 const commits = await github.paginate(github.rest.repos.listCommits, {
                   owner, repo, sha: 'main', per_page: 100
                 });
@@ -98,32 +89,31 @@ jobs:
 
             const body = `${header}\n\n${lines.join('\n') || '- No new commits found.'}`;
 
-            // ---------- 4) Keep a single rolling draft (update if exists) ----------
+            // ---------- 4) Keep a single rolling draft ----------
             const drafts = releases.filter(r => r.draft)
               .sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
             const existingDraft = drafts[0] || null;
 
             if (existingDraft) {
+              // ✅ Do NOT bump or change the tag/name while it's a draft.
               await github.rest.repos.updateRelease({
                 owner, repo,
                 release_id: existingDraft.id,
-                tag_name: nextTag,
-                target_commitish: "main",
-                name: nextName,
                 body,
                 draft: true,
                 prerelease: false,
               });
-              core.info(`Updated draft → ${nextTag} with ${lines.length} commit(s).`);
+              core.info(`Updated existing draft (${existingDraft.tag_name || '<no tag set>'}) with ${lines.length} commit(s).`);
             } else {
+              // No draft exists → create a NEW draft at the next version
               const { data: created } = await github.rest.repos.createRelease({
                 owner, repo,
-                tag_name: nextTag,
+                tag_name: computedNextTag,
                 target_commitish: "main",
-                name: nextName,
+                name: computedNextTag,
                 body,
                 draft: true,
                 prerelease: false,
               });
-              core.info(`Created draft ${created.name} with ${lines.length} commit(s).`);
+              core.info(`Created new draft ${created.name} (${created.tag_name}) with ${lines.length} commit(s).`);
             }
