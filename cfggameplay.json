@@ -91,7 +91,7 @@
 		"use3DMap": false,
 		"HitIndicationData":
 		{
-			"hitDirectionOverrideEnabled": false,
+			"hitDirectionOverrideEnabled": true,
 			"hitDirectionBehaviour": 1,
 			"hitDirectionStyle": 0,
 			"hitDirectionIndicatorColorStr": "0xffbb0a1e",
@@ -104,8 +104,8 @@
 	"MapData":
 	{
 		"ignoreMapOwnership": false,
-		"ignoreNavItemsOwnership": false,
-		"displayPlayerPosition": false,
+		"ignoreNavItemsOwnership": true,
+		"displayPlayerPosition": true,
 		"displayNavInfo": true
 	},
 	"VehicleData":
