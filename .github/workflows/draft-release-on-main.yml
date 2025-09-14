@@ -1,0 +1,101 @@
+name: Draft Release on main updates
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: draft-release-on-main
+  cancel-in-progress: false
+
+jobs:
+  draft_release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # required to create/update releases/tags
+
+    steps:
+      - name: Ensure repo metadata
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+
+            // --- helpers ---
+            const parseVer = (s) => {
+              if (!s) return null;
+              const m = s.trim().replace(/^v/i,'').match(/^(\d+)\.(\d+)\.(\d+)$/);
+              if (!m) return null;
+              return { major:+m[1], minor:+m[2], patch:+m[3], raw:`${+m[1]}.${+m[2]}.${+m[3]}` };
+            };
+            const cmp = (a,b) => a.major-b.major || a.minor-b.minor || a.patch-b.patch;
+            const incPatch = (v) => ({ major:v.major, minor:v.minor, patch:v.patch+1 });
+
+            // --- 1) Read existing releases and tags to find the current highest semver ---
+            const releases = await github.paginate(github.rest.repos.listReleases, { owner, repo, per_page: 100 });
+            const tags = await github.paginate(github.rest.repos.listTags, { owner, repo, per_page: 100 });
+
+            let versions = [];
+
+            // from releases (published + drafts)
+            for (const r of releases) {
+              const pv = parseVer(r.tag_name);
+              if (pv) versions.push(pv);
+            }
+
+            // from tags (in case tags exist without releases)
+            for (const t of tags) {
+              const tv = parseVer(t.name);
+              if (tv) versions.push(tv);
+            }
+
+            // base version if none exist
+            let nextVer = { major:1, minor:0, patch:0 };
+            if (versions.length) {
+              versions.sort(cmp);
+              const top = versions[versions.length-1];
+              nextVer = incPatch(top);   // bump PATCH each push to main
+            }
+
+            const nextTag = `v${nextVer.major}.${nextVer.minor}.${nextVer.patch}`;
+            const nextName = nextTag;
+
+            // --- 2) Find most-recent draft release (if any) ---
+            const drafts = releases.filter(r => r.draft).sort((a,b) => new Date(b.created_at)-new Date(a.created_at));
+            const existingDraft = drafts[0] || null;
+
+            // --- 3) If a draft exists, update it; otherwise create a new draft ---
+            if (existingDraft) {
+              const current = parseVer(existingDraft.tag_name);
+              // We always bump to the computed nextTag (keeps a single rolling draft)
+              if (!current || current.raw !== `${nextVer.major}.${nextVer.minor}.${nextVer.patch}` ||
+                  existingDraft.name !== nextName) {
+                await github.rest.repos.updateRelease({
+                  owner, repo,
+                  release_id: existingDraft.id,
+                  tag_name: nextTag,
+                  target_commitish: "main",
+                  name: nextName,
+                  body: existingDraft.body ?? "Draft release accumulating changes from main.",
+                  draft: true,
+                  prerelease: false,
+                });
+                core.info(`Updated existing draft → ${nextTag}`);
+              } else {
+                core.info(`Draft already up-to-date at ${nextTag}`);
+              }
+              return;
+            }
+
+            // No draft exists → create one at the next version
+            const { data: created } = await github.rest.repos.createRelease({
+              owner, repo,
+              tag_name: nextTag,
+              target_commitish: "main",
+              name: nextName,
+              body: "Draft release accumulating changes from main.",
+              draft: true,
+              prerelease: false,
+            });
+            core.info(`Created new draft release ${created.name} (${created.tag_name})`);
