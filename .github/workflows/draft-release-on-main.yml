@@ -1,3 +1,4 @@
+# .github/workflows/draft-release-on-main.yml
 name: Draft Release on main updates
 
 on:
@@ -13,7 +14,7 @@ jobs:
   draft_release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed for releases/tags
+      contents: write
 
     steps:
       - name: Create/Update rolling draft release with commit notes
@@ -22,7 +23,7 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
 
-            // --- helpers ---
+            // ---------- helpers ----------
             const parseVer = (s) => {
               if (!s) return null;
               const m = s.trim().replace(/^v/i,'').match(/^(\d+)\.(\d+)\.(\d+)$/);
@@ -32,59 +33,74 @@ jobs:
             const cmp = (a,b) => a.major-b.major || a.minor-b.minor || a.patch-b.patch;
             const incPatch = (v) => ({ major:v.major, minor:v.minor, patch:v.patch+1 });
 
-            // --- 1) Gather existing semver tags/releases ---
+            // ---------- 1) Find highest existing semver (from releases + tags) ----------
             const releases = await github.paginate(github.rest.repos.listReleases, { owner, repo, per_page: 100 });
             const tags = await github.paginate(github.rest.repos.listTags, { owner, repo, per_page: 100 });
 
-            let versions = [];
+            let allVers = [];
             for (const r of releases) {
-              const v = parseVer(r.tag_name); if (v) versions.push(v);
+              const v = parseVer(r.tag_name); if (v) allVers.push(v);
             }
             for (const t of tags) {
-              const v = parseVer(t.name); if (v) versions.push(v);
+              const v = parseVer(t.name); if (v) allVers.push(v);
             }
 
-            let baseTag = null; // last tag we compare from
             let nextVer = { major:1, minor:0, patch:0 };
-
-            if (versions.length) {
-              versions.sort(cmp);
-              const top = versions[versions.length-1];      // highest existing tag/release
-              baseTag = `v${top.raw}`;                      // compare from here
-              nextVer = incPatch(top);                      // bump patch each push
+            if (allVers.length) {
+              allVers.sort(cmp);
+              nextVer = incPatch(allVers[allVers.length - 1]);
             }
 
             const nextTag = `v${nextVer.major}.${nextVer.minor}.${nextVer.patch}`;
             const nextName = nextTag;
 
-            // --- 2) Build release body with commit messages ---
+            // ---------- 2) Choose base for notes ONLY from real git tags ----------
+            // (Use the highest semver tag that actually exists as a ref.)
+            const tagVers = [];
+            for (const t of tags) {
+              const v = parseVer(t.name); if (v) tagVers.push({ v, name: t.name });
+            }
+            tagVers.sort((a,b) => cmp(a.v,b.v));
+            const lastRealTag = tagVers.length ? tagVers[tagVers.length - 1].name : null;
+
+            // ---------- 3) Build release body (commit subjects) ----------
             let lines = [];
-            if (baseTag) {
-              // commits from last tag to main
-              const cmpRes = await github.rest.repos.compareCommitsWithBasehead({
-                owner, repo, basehead: `${baseTag}...main`,
-              });
-              lines = (cmpRes.data.commits || []).map(c =>
-                `- ${c.commit.message.split('\\n')[0]} (${c.sha.slice(0,7)})`
-              );
-            } else {
-              // no prior tag; list recent commits on main (up to 100)
+            let header = '';
+            try {
+              if (lastRealTag) {
+                const cmpRes = await github.rest.repos.compareCommitsWithBasehead({
+                  owner, repo, basehead: `${lastRealTag}...main`,
+                });
+                lines = (cmpRes.data.commits || []).map(c =>
+                  `- ${c.commit.message.split('\n')[0]} (${c.sha.slice(0,7)})`
+                );
+                header = `Changes since ${lastRealTag}:`;
+              } else {
+                // No real tag yet → list latest commits on main
+                const commits = await github.paginate(github.rest.repos.listCommits, {
+                  owner, repo, sha: 'main', per_page: 100
+                });
+                lines = commits.map(c =>
+                  `- ${c.commit.message.split('\n')[0]} (${c.sha.slice(0,7)})`
+                );
+                header = `Changes on main:`;
+              }
+            } catch (e) {
+              core.warning(`Compare failed (${e.status || 'n/a'}) — falling back to recent commits.`);
               const commits = await github.paginate(github.rest.repos.listCommits, {
                 owner, repo, sha: 'main', per_page: 100
               });
               lines = commits.map(c =>
-                `- ${c.commit.message.split('\\n')[0]} (${c.sha.slice(0,7)})`
+                `- ${c.commit.message.split('\n')[0]} (${c.sha.slice(0,7)})`
               );
+              header = `Changes on main:`;
             }
 
-            const header = baseTag
-              ? `Changes since ${baseTag}:`
-              : `Changes on main:`;
-            const body = `${header}\n\n${lines.join('\\n') || '- No new commits found.'}`;
+            const body = `${header}\n\n${lines.join('\n') || '- No new commits found.'}`;
 
-            // --- 3) Maintain a single rolling draft release ---
+            // ---------- 4) Keep a single rolling draft (update if exists) ----------
             const drafts = releases.filter(r => r.draft)
-              .sort((a,b) => new Date(b.created_at)-new Date(a.created_at));
+              .sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
             const existingDraft = drafts[0] || null;
 
             if (existingDraft) {
