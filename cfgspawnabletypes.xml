@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 
 <spawnabletypes>
+	<type name="ZmbM_usSoldier_Officer_Convoy">
+		<attachments preset="headtorches" />
+		<attachments chance="1.00">
+			<item name="MedicalScrubsHat_Green" chance="1.0" />
+		</attachments>
+		<cargo preset="foodArmy" />
+		<cargo chance="0.6">
+			<item name="ScientificBriefcaseKeys" chance="1.0" />
+		</cargo>
+	</type>
+	<type name="PunchedCard">
+		<damage min="0.8" max="0.8" />
+	</type>
 	<type name="Barrel_Blue">
 		<hoarder />
 	</type>
@@ -130,22 +143,24 @@
 		<damage min="0.1" max="0.1" />
 	</type>
 	<type name="ScientificBriefcase">
-		<damage min="0.1" max="0.1" />
+		<cargo chance="1.0">
+			<item name="ScientificBriefcaseKeys" chance="1.0" />
+		</cargo>
 	</type>
 	<type name="ScientificBriefcaseKeys">
-		<damage min="0.0" max="0.0" />
+		<damage min="0.8" max="0.8" />
 	</type>
 	<type name="ShippingContainerKeys_Blue">
-		<damage min="0.0" max="0.0" />
+		<damage min="0.8" max="0.8" />
 	</type>
 	<type name="ShippingContainerKeys_Yellow">
-		<damage min="0.0" max="0.0" />
+		<damage min="0.8" max="0.8" />
 	</type>
 	<type name="ShippingContainerKeys_Red">
-		<damage min="0.0" max="0.0" />
+		<damage min="0.8" max="0.8" />
 	</type>
 	<type name="ShippingContainerKeys_Orange">
-		<damage min="0.0" max="0.0" />
+		<damage min="0.8" max="0.8" />
 	</type>
 	<type name="Ammo_40mm_Explosive">
 		<damage min="0.0" max="0.35" />
@@ -1321,6 +1336,12 @@
 		<cargo preset="foodArmy" />		
 		<attachments preset="HeavyArmorArmy" />
 		<attachments preset="HeavyHelmetArmy" />
+		<cargo chance="0.6">
+			<item name="ShippingContainerKeys_Red" chance="0.25" />
+			<item name="ShippingContainerKeys_Orange" chance="0.25" />
+			<item name="ShippingContainerKeys_Yellow" chance="0.25" />
+			<item name="ShippingContainerKeys_Blue" chance="0.25" />
+		</cargo>
 	</type>
 	
 	<!--City-->
