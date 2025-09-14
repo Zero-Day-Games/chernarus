@@ -1,0 +1,150 @@
+name: Post release notes to Discord
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Optional: post notes for this tag instead of the latest"
+        type: string
+        required: false
+
+concurrency:
+  group: discord-release-notes
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+      ROLE_ID: ${{ secrets.DISCORD_ROLE_ID }} # optional; e.g., 123456789012345678
+      THREAD_ID: ${{ secrets.DISCORD_WEBHOOK_THREAD_ID }} # optional; for forum/threads
+
+    steps:
+      - name: Post release notes to Discord
+        uses: actions/github-script@v7
+        env:
+          WEBHOOK_URL: ${{ env.WEBHOOK_URL }}
+          ROLE_ID: ${{ env.ROLE_ID }}
+          THREAD_ID: ${{ env.THREAD_ID }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+
+            if (!process.env.WEBHOOK_URL) {
+              core.setFailed("Missing secret: DISCORD_RELEASE_WEBHOOK_URL");
+              return;
+            }
+
+            // --- 1) Determine which release to post ---
+            let rel;
+            if (context.eventName === "release") {
+              rel = context.payload.release;
+            } else {
+              // Manual run: use input tag if provided, else latest release
+              const tag = core.getInput("tag");
+              if (tag) {
+                const { data } = await github.rest.repos.getReleaseByTag({ owner, repo, tag });
+                rel = data;
+              } else {
+                const { data } = await github.rest.repos.getLatestRelease({ owner, repo });
+                rel = data;
+              }
+            }
+
+            if (!rel) {
+              core.setFailed("No release found to post.");
+              return;
+            }
+
+            // --- 2) Prepare content (sanitize & chunk) ---
+            const safe = (s) => (s || "")
+              // prevent accidental @everyone / @here pings
+              .replace(/@everyone/g, '@\u200beveryone')
+              .replace(/@here/g, '@\u200bhere');
+
+            const title = rel.name || rel.tag_name || "New Release";
+            const url = rel.html_url;
+            const tagName = rel.tag_name || "untagged";
+            const bodyRaw = rel.body || "";
+            const body = safe(bodyRaw.trim());
+
+            // Discord limits:
+            // - content: 2000 chars
+            // - embed.description: 4096 chars
+            // We'll use an embed for nicer formatting and chunk past 4096 in follow-ups.
+            const chunk = (text, size) => {
+              if (!text) return [];
+              const parts = [];
+              let remaining = text;
+              while (remaining.length > size) {
+                // try to break on the last newline before the limit
+                const slice = remaining.slice(0, size);
+                const nl = slice.lastIndexOf("\n");
+                const cut = nl > 200 ? nl : size; // prefer newline if reasonably early
+                parts.push(remaining.slice(0, cut).trimEnd());
+                remaining = remaining.slice(cut).replace(/^\n+/, "");
+              }
+              if (remaining.length) parts.push(remaining);
+              return parts;
+            };
+
+            const chunks = chunk(body, 3800); // safe buffer under 4096
+
+            // Optional role mention (first message only)
+            const mention = process.env.ROLE_ID ? `<@&${process.env.ROLE_ID}>` : "";
+            const webhookURL = process.env.THREAD_ID
+              ? `${process.env.WEBHOOK_URL}?thread_id=${process.env.THREAD_ID}`
+              : process.env.WEBHOOK_URL;
+
+            // --- 3) Send to Discord ---
+            const send = async (payload) => {
+              const res = await fetch(webhookURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+              });
+              if (!res.ok) {
+                const txt = await res.text();
+                throw new Error(`Discord webhook failed: ${res.status} ${res.statusText} :: ${txt}`);
+              }
+            };
+
+            // First message: nice embed with header + first chunk (or placeholder)
+            const firstEmbed = {
+              title: `${repo} ${tagName} — ${title}`,
+              url,
+              description: chunks.length ? chunks[0] : "_No release notes provided._",
+              color: 0x5865F2, // Discord blurple
+              timestamp: rel.published_at || new Date().toISOString(),
+              footer: {
+                text: `Published by ${rel.author?.login ?? owner}`,
+              },
+            };
+
+            await send({
+              username: "Release Notes",
+              // avatar_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+              content: mention || undefined,
+              embeds: [firstEmbed],
+              allowed_mentions: mention ? { parse: [], roles: [process.env.ROLE_ID] } : { parse: [] },
+            });
+
+            // Follow-up messages for overflow chunks (if any)
+            for (let i = 1; i < chunks.length; i++) {
+              await send({
+                username: "Release Notes",
+                embeds: [{
+                  description: chunks[i],
+                  color: 0x5865F2,
+                }],
+                allowed_mentions: { parse: [] },
+              });
+            }
+
+            core.info(`Posted release ${tagName} to Discord in ${chunks.length} message(s).`)
