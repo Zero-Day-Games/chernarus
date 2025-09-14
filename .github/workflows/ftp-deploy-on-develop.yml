@@ -48,23 +48,20 @@ jobs:
           username: ${{ secrets.DEV_FTP_USER }}
           password: ${{ secrets.DEV_FTP_PASS }}
           # Protocol options: 'ftp' or 'ftps'
-          protocol: ${{ secrets.DEV_FTP_PROTOCOL || 'ftp' }}
-          port: ${{ secrets.DEV_FTP_PORT || 21 }}
+          protocol: ${{ secrets.FTP_PROTOCOL || 'ftp' }}
+          port: ${{ secrets.FTP_PORT || 21 }}
           local-dir: ${{ env.LOCAL_DIR }}/
           server-dir: ${{ env.SERVER_DIR }}/
           # Only upload changed files; do NOT wipe server directory
           dangerous-clean-slate: false
           # Set to 'true' when running from the manual dispatch with dry_run input
           dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
-          # Exclude unwanted files and folders
+          # Useful excludes (globs)
           exclude: |
-            .git/**
-            **/.git/**
-            .github/**
+            **/.git*
             **/.github/**
-            node_modules/**
             **/node_modules/**
-            .DS_Store
-            .env
-            README.md
+            **/.DS_Store
+            **/.env
+            **/README.md
             **/*.map
