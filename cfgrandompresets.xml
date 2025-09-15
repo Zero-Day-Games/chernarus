@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <randompresets>
+		<cargo chance="1.0" name="vehicles">
+				<item name="CanisterGasoline" chance="1.0" />
+				<item name="WaterBottle" chance="1.0" />
+				<item name="WaterBottle" chance="1.0" />
+				<item name="WaterBottle" chance="1.0" />
+		</cargo>
+		<cargo chance="1.0" name="trucks">
+				<item name="CanisterGasoline" chance="1.0" />
+		</cargo>
 		<cargo chance="0.15" name="foodHermit">
 				<item name="TunaCan" chance="0.11" />
 				<item name="SardinesCan" chance="0.11" />
