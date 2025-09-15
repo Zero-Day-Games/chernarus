@@ -3831,6 +3831,7 @@
 			<item name="Truck_01_Door_2_1" chance="0.40" />
 		</attachments>
 		<cargo preset="trucks" />
+		<cargo preset="builderTrucks" />
 	</type>
 	<type name="Truck_01_Covered_Blue">
 		<attachments chance="1.00">
@@ -3876,6 +3877,7 @@
 			<item name="Truck_01_Door_2_1_Blue" chance="0.50" />
 		</attachments>
 		<cargo preset="trucks" />
+		<cargo preset="builderTrucks" />
 	</type>
 	<type name="Truck_01_Covered_Orange">
 		<attachments chance="1.00">
@@ -3921,6 +3923,7 @@
 			<item name="Truck_01_Door_2_1_Orange" chance="0.50" />
 		</attachments>
 		<cargo preset="trucks" />
+		<cargo preset="builderTrucks" />
 	</type>
 <!--
 	<type name="V3S_Chassis">

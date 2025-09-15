@@ -9,6 +9,55 @@
 		<cargo chance="1.0" name="trucks">
 				<item name="CanisterGasoline" chance="1.0" />
 		</cargo>
+		<cargo chance="1.0" name="builderTrucks">
+				<item name="WoodenLog" chance="1.0" />
+				<item name="WoodenPlank" chance="1.0" />
+				<item name="MetalPlate" chance="1.0" />
+				<item name="Barrel_Blue" chance="1.0" />
+				<item name="Barrel_Green" chance="1.0" />
+				<item name="Barrel_Red" chance="1.0" />
+				<item name="Barrel_Yellow" chance="1.0" />
+				<item name="WoodenCrate" chance="1.0" />
+				<item name="WoodenCrate" chance="1.0" />
+				<item name="WoodenCrate" chance="1.0" />
+				<item name="WoodenCrate" chance="1.0" />
+				<item name="SledgeHammer" chance="1.0" />
+				<item name="Pickaxe" chance="1.0" />
+				<item name="Hatchet" chance="1.0" />
+				<item name="Pliers" chance="1.0" />
+				<item name="MetalWire" chance="1.0" />
+				<item name="MetalWire" chance="1.0" />
+				<item name="MetalWire" chance="1.0" />
+				<item name="MetalWire" chance="1.0" />
+				<item name="MetalWire" chance="1.0" />
+				<item name="Rope" chance="1.0" />
+				<item name="Rope" chance="1.0" />
+				<item name="CombinationLock4" chance="1.0" />
+				<item name="CombinationLock4" chance="1.0" />
+				<item name="CombinationLock4" chance="1.0" />
+				<item name="CombinationLock4" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="NailBox" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Whetstone" chance="1.0" />
+				<item name="Flag_White" chance="1.0" />
+		</cargo>
 		<cargo chance="0.15" name="foodHermit">
 				<item name="TunaCan" chance="0.11" />
 				<item name="SardinesCan" chance="0.11" />
