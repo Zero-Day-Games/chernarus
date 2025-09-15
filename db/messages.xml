@@ -43,5 +43,14 @@ Example messages:
         <text>Welcome to my server #name</text>
     </message>
     -->
+    <message>
+        <repeat>15</repeat>
+        <text>#name</text>
+    </message>
+    <message>
+        <deadline>120</deadline>
+        <shutdown>1</shutdown>
+        <text>Server will reboot in #tmin minutes.</text>
+    </message>
 
 </messages>
