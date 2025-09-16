@@ -17242,10 +17242,10 @@
         <category name="weapons"/>
     </type>
     <type name="ScientificBriefcase">
-        <nominal>2</nominal>
+        <nominal>0</nominal>
         <lifetime>1800</lifetime>
         <restock>0</restock>
-        <min>1</min>
+        <min>0</min>
         <quantmin>-1</quantmin>
         <quantmax>-1</quantmax>
         <cost>100</cost>
