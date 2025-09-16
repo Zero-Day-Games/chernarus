@@ -805,8 +805,8 @@
     </event>
     <event name="StaticHeliCrash">
         <nominal>10</nominal>
-        <min>3</min>
-        <max>12</max>
+        <min>5</min>
+        <max>15</max>
         <lifetime>2100</lifetime>
         <restock>0</restock>
         <saferadius>1000</saferadius>
@@ -893,7 +893,7 @@
     <event name="StaticTrain">
         <nominal>10</nominal>
         <min>5</min>
-        <max>12</max>
+        <max>15</max>
         <lifetime>5400</lifetime>
         <restock>0</restock>
         <saferadius>500</saferadius>
@@ -1120,8 +1120,8 @@
         </children>
     </event>
     <event name="VehicleOffroad02">
-        <nominal>10</nominal>
-        <min>10</min>
+        <nominal>5</nominal>
+        <min>5</min>
         <max>10</max>
         <lifetime>300</lifetime>
         <restock>0</restock>
@@ -1175,9 +1175,9 @@
         </children>
     </event>
     <event name="VehicleTruck01">
-        <nominal>10</nominal>
-        <min>10</min>
-        <max>10</max>
+        <nominal>20</nominal>
+        <min>20</min>
+        <max>20</max>
         <lifetime>300</lifetime>
         <restock>0</restock>
         <saferadius>500</saferadius>
