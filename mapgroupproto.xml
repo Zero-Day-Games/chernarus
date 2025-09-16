@@ -17,10 +17,10 @@
 		</defaults>
     <group name="Land_Underground_WaterMaintenance_BIATHLON" lootmax="1000">
         <dispatch dechance="1.0">
-            <proxy type="MK4Optic_Black" pos="-5.531372 0.916015 -4.985352" rpy="90.000000 9.500118 -0.002711" dechance="1.0" />
-            <proxy type="MK4Optic_Black" pos="-5.516968 0.915852 -4.315430" rpy="90.000000 142.500107 179.999893" dechance="1.0" />
-            <proxy type="ACOGOptic_6x" pos="-5.264648 1.613729 0.100098" rpy="90.000000 -142.899887 179.999756" dechance="1.0" />
-            <proxy type="ACOGOptic_6x" pos="-3.787109 1.612921 1.297363" rpy="90.000000 65.099945 -0.000238" dechance="1.0" />
+            <proxy type="MK4Optic_Black" pos="-5.531372 0.916015 -4.985352" rpy="90.000000 9.500118 0.000000" dechance="1.0" />
+            <proxy type="MK4Optic_Black" pos="-5.516968 0.915852 -4.315430" rpy="90.000000 142.500107 180.000000" dechance="1.0" />
+            <proxy type="ACOGOptic_6x" pos="-5.264648 1.613729 0.100098" rpy="90.000000 -142.899887 180.000000" dechance="1.0" />
+            <proxy type="ACOGOptic_6x" pos="-3.787109 1.612921 1.297363" rpy="90.000000 65.099945 0.000000" dechance="1.0" />
             <proxy type="Ammo_40mm_Explosive" pos="-5.363037 0.584377 0.418457" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             <proxy type="Ammo_40mm_Explosive" pos="-5.219604 0.584377 0.511719" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             <proxy type="Ammo_40mm_Explosive" pos="-5.302490 0.584377 0.729980" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
@@ -40,59 +40,59 @@
             <proxy type="Ammo_40mm_ChemGas" pos="-5.338501 0.084377 0.008789" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             <proxy type="Ammo_40mm_ChemGas" pos="-5.239380 0.084377 0.106934" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             <proxy type="ImprovisedExplosive" pos="-5.253296 1.584377 0.643066" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
-            <proxy type="RemoteDetonator" pos="-5.230713 1.614547 0.391113" rpy="-90.000000 -160.099960 179.999893" dechance="1.0" />
+            <proxy type="RemoteDetonator" pos="-5.230713 1.614547 0.391113" rpy="270.000000 -160.099960 180.000000" dechance="1.0" />
             <proxy type="Plastic_Explosive" pos="-5.323975 0.111439 0.593262" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             <proxy type="Plastic_Explosive" pos="-5.187622 0.111438 0.591797" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             <proxy type="Plastic_Explosive" pos="-5.334351 0.332585 -6.741211" rpy="0.000000 0.000822 0.000000" dechance="1.0" />
             <proxy type="Plastic_Explosive" pos="-5.368774 0.333804 -5.860352" rpy="0.000000 -14.696070 0.000000" dechance="1.0" />
             <proxy type="ImprovisedExplosive" pos="-5.312012 0.618054 -6.919922" rpy="0.000000 -25.699993 0.000000" dechance="1.0" />
-            <proxy type="RemoteDetonator" pos="-5.409424 0.991486 -6.600586" rpy="-90.000000 -144.600006 179.999893" dechance="1.0" />
-            <proxy type="AmmoBox_556x45Tracer_20Rnd" pos="-1.700806 1.537389 -6.486328" rpy="90.000000 179.999893 179.999893" dechance="1.0" />
+            <proxy type="RemoteDetonator" pos="-5.409424 0.991486 -6.600586" rpy="270.000000 -144.600006 180.000000" dechance="1.0" />
+            <proxy type="AmmoBox_556x45Tracer_20Rnd" pos="-1.700806 1.537389 -6.486328" rpy="90.000000 180.000000 180.000000" dechance="1.0" />
             <proxy type="AmmoBox_556x45Tracer_20Rnd" pos="-1.569702 1.536276 -6.557617" rpy="90.000000 -41.800098 0.000000" dechance="1.0" />
             <proxy type="AmmoBox_556x45Tracer_20Rnd" pos="-1.693603 1.536272 -6.603027" rpy="90.000000 163.300003 0.000000" dechance="1.0" />
             <proxy type="AmmoBox_556x45Tracer_20Rnd" pos="-1.592041 1.536272 -6.692383" rpy="90.000000 -28.800100 0.000000" dechance="1.0" />
-            <proxy type="AmmoBox_762x54Tracer_20Rnd" pos="-1.894897 1.551013 -6.545410" rpy="90.000000 -16.400097 -0.000104" dechance="1.0" />
-            <proxy type="AmmoBox_762x54Tracer_20Rnd" pos="-1.860107 1.536272 -6.656250" rpy="90.000000 154.499847 179.999893" dechance="1.0" />
+            <proxy type="AmmoBox_762x54Tracer_20Rnd" pos="-1.894897 1.551013 -6.545410" rpy="90.000000 -16.400097 0.000000" dechance="1.0" />
+            <proxy type="AmmoBox_762x54Tracer_20Rnd" pos="-1.860107 1.536272 -6.656250" rpy="90.000000 154.499847 180.000000" dechance="1.0" />
             <proxy type="AmmoBox_762x54Tracer_20Rnd" pos="-1.781372 1.536272 -6.729980" rpy="90.000000 -20.000099 0.000000" dechance="1.0" />
             <proxy type="AmmoBox_762x54Tracer_20Rnd" pos="-1.892944 1.536272 -6.884766" rpy="90.000000 149.300003 0.000000" dechance="1.0" />
-            <proxy type="AmmoBox_308WinTracer_20Rnd" pos="-2.227539 1.550886 -6.694336" rpy="90.000000 145.599960 -0.000104" dechance="1.0" />
-            <proxy type="AmmoBox_308WinTracer_20Rnd" pos="-2.051880 1.536272 -6.689941" rpy="90.000000 46.000072 -0.000104" dechance="1.0" />
+            <proxy type="AmmoBox_308WinTracer_20Rnd" pos="-2.227539 1.550886 -6.694336" rpy="90.000000 145.599960 0.000000" dechance="1.0" />
+            <proxy type="AmmoBox_308WinTracer_20Rnd" pos="-2.051880 1.536272 -6.689941" rpy="90.000000 46.000072 0.000000" dechance="1.0" />
             <proxy type="AmmoBox_308WinTracer_20Rnd" pos="-2.110107 1.536272 -6.818848" rpy="90.000000 -160.899994 0.000000" dechance="1.0" />
-            <proxy type="AmmoBox_308WinTracer_20Rnd" pos="-2.093140 1.536272 -6.954590" rpy="90.000000 5.500073 -0.000104" dechance="1.0" />
-            <proxy type="WeaponCleaningKit" pos="-3.801392 0.105574 1.156250" rpy="90.000000 -0.000104 -0.000104" dechance="1.0" />
-            <proxy type="WeaponCleaningKit" pos="-3.801269 0.083570 1.325195" rpy="90.000000 179.999893 179.999893" dechance="1.0" />
-            <proxy type="WeaponCleaningKit" pos="-3.800781 0.083570 1.522949" rpy="90.000000 179.999893 179.999893" dechance="1.0" />
-            <proxy type="ElectronicRepairKit" pos="-4.246216 0.099860 1.213379" rpy="-90.000000 -0.000104 -0.000104" dechance="1.0" />
-            <proxy type="ElectronicRepairKit" pos="-4.237305 0.083570 1.359375" rpy="-90.000000 179.999893 179.999893" dechance="1.0" />
-            <proxy type="ElectronicRepairKit" pos="-4.231811 0.083570 1.506348" rpy="-90.000000 179.999893 179.999893" dechance="1.0" />
-            <proxy type="Aug" pos="-4.452270 0.029952 -4.188477" rpy="-90.000000 34.700096 -0.000104" dechance="1.0" />
-            <proxy type="Aug" pos="-2.913330 0.029952 -1.428711" rpy="-90.000000 -72.900009 0.000104" dechance="1.0" />
-            <proxy type="M14" pos="-1.885010 0.945967 -5.644531" rpy="90.000000 -166.100021 179.999893" dechance="1.0" />
-            <proxy type="M14" pos="-4.648437 0.028916 -5.927246" rpy="90.000000 129.600006 -0.000104" dechance="1.0" />
-            <proxy type="SV98" pos="-4.859741 0.020477 -2.437012" rpy="90.000000 -11.900084 179.999893" dechance="1.0" />
-            <proxy type="SV98" pos="-3.735596 0.024467 -0.388672" rpy="90.000000 54.499908 -0.000104" dechance="1.0" />
-            <proxy type="M79" pos="-5.426025 0.988746 -5.706055" rpy="90.000000 179.999893 179.999893" dechance="1.0" />
-            <proxy type="M79" pos="-2.945679 0.022693 -2.587891" rpy="90.000000 -158.299973 -0.000104" dechance="1.0" />
+            <proxy type="AmmoBox_308WinTracer_20Rnd" pos="-2.093140 1.536272 -6.954590" rpy="90.000000 5.500073 0.000000" dechance="1.0" />
+            <proxy type="WeaponCleaningKit" pos="-3.801392 0.105574 1.156250" rpy="90.000000 0.000000 0.000000" dechance="1.0" />
+            <proxy type="WeaponCleaningKit" pos="-3.801269 0.083570 1.325195" rpy="90.000000 180.000000 180.000000" dechance="1.0" />
+            <proxy type="WeaponCleaningKit" pos="-3.800781 0.083570 1.522949" rpy="90.000000 180.000000 180.000000" dechance="1.0" />
+            <proxy type="ElectronicRepairKit" pos="-4.246216 0.099860 1.213379" rpy="270.000000 0.000000 0.000000" dechance="1.0" />
+            <proxy type="ElectronicRepairKit" pos="-4.237305 0.083570 1.359375" rpy="270.000000 180.000000 180.000000" dechance="1.0" />
+            <proxy type="ElectronicRepairKit" pos="-4.231811 0.083570 1.506348" rpy="270.000000 180.000000 180.000000" dechance="1.0" />
+            <proxy type="Aug" pos="-4.452270 0.029952 -4.188477" rpy="270.000000 34.700096 0.000000" dechance="1.0" />
+            <proxy type="Aug" pos="-2.913330 0.029952 -1.428711" rpy="270.000000 -72.900009 0.000104" dechance="1.0" />
+            <proxy type="M14" pos="-1.885010 0.945967 -5.644531" rpy="90.000000 -166.100021 180.000000" dechance="1.0" />
+            <proxy type="M14" pos="-4.648437 0.028916 -5.927246" rpy="90.000000 129.600006 0.000000" dechance="1.0" />
+            <proxy type="SV98" pos="-4.859741 0.020477 -2.437012" rpy="90.000000 -11.900084 180.000000" dechance="1.0" />
+            <proxy type="SV98" pos="-3.735596 0.024467 -0.388672" rpy="90.000000 54.499908 0.000000" dechance="1.0" />
+            <proxy type="M79" pos="-5.426025 0.988746 -5.706055" rpy="90.000000 180.000000 180.000000" dechance="1.0" />
+            <proxy type="M79" pos="-2.945679 0.022693 -2.587891" rpy="90.000000 -158.299973 0.000000" dechance="1.0" />
             <proxy type="PlateCarrierVest_Black" pos="-1.835815 0.927674 0.194824" rpy="0.000000 -121.358864 0.000000" dechance="1.0" />
             <proxy type="PlateCarrierVest_Camo" pos="-1.866577 0.927674 -1.254395" rpy="0.000000 -91.597099 0.000000" dechance="1.0" />
             <proxy type="Mich2001Helmet" pos="-1.765015 0.927674 -0.332520" rpy="0.000000 -133.005417 0.000000" dechance="1.0" />
             <proxy type="Mich2001Helmet" pos="-4.379272 1.583570 1.244141" rpy="0.000000 117.414207 0.000000" dechance="1.0" />
             <proxy type="AliceBag_Black" pos="-5.497314 0.005327 -3.789551" rpy="0.000000 90.000000 0.000000" dechance="1.0" />
-            <proxy type="AliceBag_Camo" pos="-2.943848 0.005327 1.480469" rpy="0.000000 -89.999985 0.000000" dechance="1.0" />
-            <proxy type="Mag_STANAG_60Rnd" pos="-5.384155 1.106808 -0.005371" rpy="90.000000 -179.998703 -179.999756" dechance="1.0" />
-            <proxy type="Mag_STANAG_60Rnd" pos="-5.259888 1.106808 0.506348" rpy="90.000000 42.700081 -0.000364" dechance="1.0" />
-            <proxy type="Mag_STANAG_60Rnd" pos="-5.317627 0.606808 0.025879" rpy="90.000000 -109.400719 -0.000105" dechance="1.0" />
-            <proxy type="Mag_STANAG_60Rnd" pos="-5.365112 1.106808 0.242676" rpy="90.000000 168.299957 179.999359" dechance="1.0" />
-            <proxy type="Mag_M14_20Rnd" pos="-4.477295 1.098785 1.282715" rpy="90.000000 31.400194 179.999496" dechance="1.0" />
-            <proxy type="Mag_M14_20Rnd" pos="-4.250610 1.098785 1.232422" rpy="89.972015 -44.199966 179.999893" dechance="1.0" />
-            <proxy type="Mag_M14_20Rnd" pos="-4.115478 1.098785 1.338867" rpy="89.972015 6.400389 -0.000573" dechance="1.0" />
-            <proxy type="Mag_M14_20Rnd" pos="-3.875244 1.098785 1.176270" rpy="90.000000 123.899956 -0.000104" dechance="1.0" />
-            <proxy type="Mag_SV98_10Rnd" pos="-4.447266 0.596096 1.205078" rpy="90.000000 179.999756 179.999496" dechance="1.0" />
-            <proxy type="Mag_SV98_10Rnd" pos="-4.225708 0.596096 1.191406" rpy="90.000000 155.699448 179.999893" dechance="1.0" />
-            <proxy type="Mag_SV98_10Rnd" pos="-4.297241 0.596096 1.327637" rpy="90.000000 31.100155 -0.000112" dechance="1.0" />
-            <proxy type="Mag_SV98_10Rnd" pos="-3.903442 0.596096 1.207031" rpy="90.000000 -99.500015 -0.000118" dechance="1.0" />
-            <proxy type="MK4Optic_Black" pos="-1.645630 0.964999 -5.465332" rpy="90.000000 150.699982 179.999893" dechance="1.0" />
-            <proxy type="MK4Optic_Black" pos="-1.641357 0.964999 -5.726074" rpy="90.000000 169.099991 179.999893" dechance="1.0" />
+            <proxy type="AliceBag_Camo" pos="-2.943848 0.005327 1.480469" rpy="0.000000 270.000000 0.000000" dechance="1.0" />
+            <proxy type="Mag_STANAG_60Rnd" pos="-5.384155 1.106808 -0.005371" rpy="90.000000 180.000000 180.000000" dechance="1.0" />
+            <proxy type="Mag_STANAG_60Rnd" pos="-5.259888 1.106808 0.506348" rpy="90.000000 42.700081 0.000000" dechance="1.0" />
+            <proxy type="Mag_STANAG_60Rnd" pos="-5.317627 0.606808 0.025879" rpy="90.000000 -109.400719 0.000000" dechance="1.0" />
+            <proxy type="Mag_STANAG_60Rnd" pos="-5.365112 1.106808 0.242676" rpy="90.000000 168.299957 180.000000" dechance="1.0" />
+            <proxy type="Mag_M14_20Rnd" pos="-4.477295 1.098785 1.282715" rpy="90.000000 31.400194 180.000000" dechance="1.0" />
+            <proxy type="Mag_M14_20Rnd" pos="-4.250610 1.098785 1.232422" rpy="90.000000 -44.199966 180.000000" dechance="1.0" />
+            <proxy type="Mag_M14_20Rnd" pos="-4.115478 1.098785 1.338867" rpy="90.000000 6.400389 0.000000" dechance="1.0" />
+            <proxy type="Mag_M14_20Rnd" pos="-3.875244 1.098785 1.176270" rpy="90.000000 123.899956 0.000000" dechance="1.0" />
+            <proxy type="Mag_SV98_10Rnd" pos="-4.447266 0.596096 1.205078" rpy="90.000000 180.000000 180.000000" dechance="1.0" />
+            <proxy type="Mag_SV98_10Rnd" pos="-4.225708 0.596096 1.191406" rpy="90.000000 155.699448 180.000000" dechance="1.0" />
+            <proxy type="Mag_SV98_10Rnd" pos="-4.297241 0.596096 1.327637" rpy="90.000000 31.100155 0.000000" dechance="1.0" />
+            <proxy type="Mag_SV98_10Rnd" pos="-3.903442 0.596096 1.207031" rpy="90.000000 -99.500015 0.000000" dechance="1.0" />
+            <proxy type="MK4Optic_Black" pos="-1.645630 0.964999 -5.465332" rpy="90.000000 150.699982 180.000000" dechance="1.0" />
+            <proxy type="MK4Optic_Black" pos="-1.641357 0.964999 -5.726074" rpy="90.000000 169.099991 180.000000" dechance="1.0" />
         </dispatch>
     </group>
 
@@ -115,7 +115,7 @@
                 <point pos="2.449341 -1.087740 -0.670532" range="0.377808" height="0.944519" />
             </container>
             <dispatch dechance="1.0">
-                <proxy type="ScientificBriefcase" pos="0.000000 -1.017393 0.000000" rpy="90.000000 179.999893 179.999893" dechance="1.0" />
+                <proxy type="ScientificBriefcase" pos="0.000000 -1.017393 0.000000" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             </dispatch>
         </group>
         <group name="Land_ContainerLocked_Orange_DE" lootmax="9">
@@ -137,7 +137,7 @@
                 <point pos="2.449341 -1.087740 -0.670532" range="0.377808" height="0.944519" />
             </container>
             <dispatch dechance="1.0">
-                <proxy type="ScientificBriefcase" pos="0.000000 -1.017393 0.000000" rpy="90.000000 179.999893 179.999893" dechance="1.0"/>
+                <proxy type="ScientificBriefcase" pos="0.000000 -1.017393 0.000000" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             </dispatch>
         </group>
         <group name="Land_ContainerLocked_Yellow_DE" lootmax="9">
@@ -159,7 +159,7 @@
                 <point pos="2.449341 -1.087740 -0.670532" range="0.377808" height="0.944519" />
             </container>
             <dispatch dechance="1.0">
-                <proxy type="ScientificBriefcase" pos="0.000000 -1.017393 0.000000" rpy="90.000000 179.999893 179.999893" dechance="1.0" />
+                <proxy type="ScientificBriefcase" pos="0.000000 -1.017393 0.000000" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             </dispatch>
         </group>
         <group name="Land_ContainerLocked_Blue_DE" lootmax="9">
@@ -181,7 +181,7 @@
                 <point pos="2.449341 -1.087740 -0.670532" range="0.377808" height="0.944519" />
             </container>
             <dispatch dechance="1.0">
-                <proxy type="ScientificBriefcase" pos="0.000000 -1.017393 0.000000" rpy="90.000000 179.999893 179.999893" dechance="1.0" />
+                <proxy type="ScientificBriefcase" pos="0.000000 -1.017393 0.000000" rpy="0.000000 0.000000 0.000000" dechance="1.0" />
             </dispatch>
         </group>
 		<group name="Land_Shed_M1" lootmax="2">
