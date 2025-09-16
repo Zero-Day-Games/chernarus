@@ -144,7 +144,34 @@
 	</type>
 	<type name="ScientificBriefcase">
 		<cargo chance="1.0">
-			<item name="ScientificBriefcaseKeys" chance="1.0" />
+			<item name="PunchedCard" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="Grenade_ChemGas" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="Grenade_ChemGas" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="Grenade_ChemGas" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="AntiChemInjector" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="AntiChemInjector" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="AntiChemInjector" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="Ammo_40mm_Chemgas" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="Ammo_40mm_Chemgas" chance="1.0" />
+		</cargo>
+		<cargo chance="0.6">
+			<item name="Ammo_40mm_Chemgas" chance="1.0" />
 		</cargo>
 	</type>
 	<type name="ScientificBriefcaseKeys">
