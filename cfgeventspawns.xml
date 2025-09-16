@@ -177,7 +177,7 @@
 		<pos x="2529.212891" z="5041.117676" a="56.153545" />
 	</event>
     <event name="StaticHeliCrash">
-		<zone smin="1" smax="3" dmin="3" dmax="5" r="45" />
+		<zone smin="1" smax="3" dmin="5" dmax="8" r="45" />
 		<pos x="558.859619" z="12918.953125" a="-1" />
 		<pos x="154.159332" z="13299.455078" a="-1" />
 		<pos x="3886.950928" z="13213.515625" a="-1" />
@@ -1414,7 +1414,7 @@
     	<pos x="3262.817" z="12430.286" a="0" y="219.495" group="Train_Mil_Petrovka"/>
 	</event>
 	<event name="StaticMilitaryConvoy">
-		<zone smin="0" smax="0" dmin="1" dmax="1" r="20" />
+		<zone smin="0" smax="0" dmin="5" dmax="8" r="20" />
     	<pos x="8434.497" z="14003.119" a="0" y="205.349" group="Abandoned_Arsenovo"/>
 		<pos x="5272.803" z="2085.858" a="0" y="5.600" group="Abandoned_Balota"/>
 		<pos x="5664.508" z="3254.114" a="0" y="120.222" group="Abandoned_Cherno"/>
