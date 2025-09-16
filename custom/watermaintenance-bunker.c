@@ -1,0 +1,113 @@
+static Object SpawnObject(string type, vector position, vector orientation, float scale = 1.0)
+{
+    Object obj;
+    if (type.Contains(".p3d")) {
+        obj = GetGame().CreateStaticObjectUsingP3D(type, position, orientation, scale, false);
+    } else {        
+        obj = GetGame().CreateObjectEx(type, position, ECE_SETUP | ECE_CREATEPHYSICS | ECE_NOLIFETIME | ECE_NOPERSISTENCY_WORLD | ECE_NOPERSISTENCY_CHAR);
+    }
+
+    if (!obj) {
+        Error("Failed to create object " + type);
+        return null;
+    }
+
+    obj.SetPosition(position);
+    obj.SetOrientation(orientation);
+    obj.SetOrientation(obj.GetOrientation());
+    obj.SetScale(scale);
+    obj.Update();
+	obj.SetAffectPathgraph(true, false);
+	if (obj.CanAffectPathgraph()) {
+        GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(GetGame().UpdatePathgraphRegionByObject, 100, false, obj);
+    } 
+
+    return obj;
+}
+
+// Paste anything below this line into the bottom of your 'void main()' function
+
+
+// Created Objects
+SpawnObject("Land_Underground_WaterMaintenance", "7556.972168 6.533984 1568.199707", "0.000000 0.000000 0.000000", 1);
+SpawnObject("MK4Optic_Black", "7561.957520 7.449999 1562.668335", "9.500118 90.000000 0.000000", 1);
+SpawnObject("MK4Optic_Black", "7561.287598 7.449836 1562.682739", "142.500107 90.000000 180.000000", 1);
+SpawnObject("ACOGOptic_6x", "7556.872070 8.147713 1562.935059", "-142.899887 90.000000 180.000000", 1);
+SpawnObject("ACOGOptic_6x", "7555.674805 8.146905 1564.412598", "65.099945 90.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7556.553711 7.118361 1562.836670", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7556.460449 7.118361 1562.980103", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7556.242188 7.118361 1562.897217", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7555.822266 6.617554 1563.691528", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7555.787598 7.117554 1564.493408", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7555.568848 7.117554 1564.187622", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7556.291504 7.618361 1563.135498", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7556.280273 7.618361 1562.919556", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7563.084473 7.156998 1562.810425", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7562.844238 7.151164 1562.836426", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7564.076660 6.841144 1563.008545", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_Explosive", "7563.469727 7.155921 1562.897095", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_ChemGas", "7564.032227 7.493134 1562.913086", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_ChemGas", "7561.778320 7.413987 1562.545532", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_ChemGas", "7563.100098 7.461584 1566.595093", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_ChemGas", "7557.835449 7.461658 1566.208008", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_ChemGas", "7556.963379 6.618361 1562.861206", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Ammo_40mm_ChemGas", "7556.865234 6.618361 1562.960327", "0.000000 0.000000 0.000000", 1);
+SpawnObject("ImprovisedExplosive", "7556.329102 8.118361 1562.946411", "0.000000 0.000000 0.000000", 1);
+SpawnObject("RemoteDetonator", "7556.581055 8.148531 1562.968994", "-160.099960 270.000000 180.000000", 1);
+SpawnObject("Plastic_Explosive", "7556.378906 6.645423 1562.875732", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Plastic_Explosive", "7556.380371 6.645422 1563.012085", "0.000000 0.000000 0.000000", 1);
+SpawnObject("Plastic_Explosive", "7563.713379 6.866569 1562.865356", "0.000822 0.000000 0.000000", 1);
+SpawnObject("Plastic_Explosive", "7562.832520 6.867788 1562.830933", "-14.696070 0.000000 0.000000", 1);
+SpawnObject("ImprovisedExplosive", "7563.892090 7.152038 1562.887695", "-25.699993 0.000000 0.000000", 1);
+SpawnObject("RemoteDetonator", "7563.572754 7.525470 1562.790283", "-144.600006 270.000000 180.000000", 1);
+SpawnObject("AmmoBox_556x45Tracer_20Rnd", "7563.458496 8.071373 1566.498901", "180.000000 90.000000 180.000000", 1);
+SpawnObject("AmmoBox_556x45Tracer_20Rnd", "7563.529785 8.070260 1566.630005", "-41.800098 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_556x45Tracer_20Rnd", "7563.575195 8.070256 1566.506104", "163.300003 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_556x45Tracer_20Rnd", "7563.664551 8.070256 1566.607666", "-28.800100 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_762x54Tracer_20Rnd", "7563.517578 8.084997 1566.304810", "-16.400097 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_762x54Tracer_20Rnd", "7563.628418 8.070256 1566.339600", "154.499847 90.000000 180.000000", 1);
+SpawnObject("AmmoBox_762x54Tracer_20Rnd", "7563.702148 8.070256 1566.418335", "-20.000099 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_762x54Tracer_20Rnd", "7563.856934 8.070256 1566.306763", "149.300003 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_308WinTracer_20Rnd", "7563.666504 8.084870 1565.972168", "145.599960 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_308WinTracer_20Rnd", "7563.662109 8.070256 1566.147827", "46.000072 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_308WinTracer_20Rnd", "7563.791016 8.070256 1566.089600", "-160.899994 90.000000 0.000000", 1);
+SpawnObject("AmmoBox_308WinTracer_20Rnd", "7563.926758 8.070256 1566.106567", "5.500073 90.000000 0.000000", 1);
+SpawnObject("WeaponCleaningKit", "7555.815918 6.639558 1564.398315", "0.000000 90.000000 0.000000", 1);
+SpawnObject("WeaponCleaningKit", "7555.646973 6.617554 1564.398438", "180.000000 90.000000 180.000000", 1);
+SpawnObject("WeaponCleaningKit", "7555.449219 6.617554 1564.398926", "180.000000 90.000000 180.000000", 1);
+SpawnObject("ElectronicRepairKit", "7555.758789 6.633844 1563.953491", "0.000000 270.000000 0.000000", 1);
+SpawnObject("ElectronicRepairKit", "7555.612793 6.617554 1563.962402", "180.000000 270.000000 180.000000", 1);
+SpawnObject("ElectronicRepairKit", "7555.465820 6.617554 1563.967896", "180.000000 270.000000 180.000000", 1);
+SpawnObject("Aug", "7561.160645 6.563936 1563.747437", "34.700096 270.000000 0.000000", 1);
+SpawnObject("Aug", "7558.400879 6.563936 1565.286377", "-72.900009 270.000000 0.000104", 1);
+SpawnObject("M14", "7562.616699 7.479951 1566.314697", "-166.100021 90.000000 180.000000", 1);
+SpawnObject("M14", "7562.899414 6.562900 1563.551270", "129.600006 90.000000 0.000000", 1);
+SpawnObject("SV98", "7559.409180 6.554461 1563.339966", "-11.900084 90.000000 180.000000", 1);
+SpawnObject("SV98", "7557.360840 6.558451 1564.464111", "54.499908 90.000000 0.000000", 1);
+SpawnObject("M79", "7562.678223 7.522730 1562.773682", "180.000000 90.000000 180.000000", 1);
+SpawnObject("M79", "7559.560059 6.556677 1565.254028", "-158.299973 90.000000 0.000000", 1);
+SpawnObject("PlateCarrierVest_Black", "7556.777344 7.461658 1566.363892", "-121.358864 0.000000 0.000000", 1);
+SpawnObject("PlateCarrierVest_Camo", "7558.226563 7.461658 1566.333130", "-91.597099 0.000000 0.000000", 1);
+SpawnObject("Mich2001Helmet", "7557.304688 7.461658 1566.434692", "-133.005417 0.000000 0.000000", 1);
+SpawnObject("Mich2001Helmet", "7555.728027 8.117554 1563.820435", "117.414207 0.000000 0.000000", 1);
+SpawnObject("AliceBag_Black", "7560.761719 6.539311 1562.702393", "90.000000 0.000000 0.000000", 1);
+SpawnObject("AliceBag_Camo", "7555.491699 6.539311 1565.255859", "270.000000 0.000000 0.000000", 1);
+SpawnObject("Mag_STANAG_60Rnd", "7556.977539 7.640792 1562.815552", "180.000000 90.000000 180.000000", 1);
+SpawnObject("Mag_STANAG_60Rnd", "7556.465820 7.640792 1562.939819", "42.700081 90.000000 0.000000", 1);
+SpawnObject("Mag_STANAG_60Rnd", "7556.946289 7.140792 1562.882080", "-109.400719 90.000000 0.000000", 1);
+SpawnObject("Mag_STANAG_60Rnd", "7556.729492 7.640792 1562.834595", "168.299957 90.000000 180.000000", 1);
+SpawnObject("Mag_M14_20Rnd", "7555.689453 7.632769 1563.722412", "31.400194 90.000000 180.000000", 1);
+SpawnObject("Mag_M14_20Rnd", "7555.739746 7.632769 1563.949097", "-44.199966 90.000000 180.000000", 1);
+SpawnObject("Mag_M14_20Rnd", "7555.633301 7.632769 1564.084229", "6.400389 90.000000 0.000000", 1);
+SpawnObject("Mag_M14_20Rnd", "7555.795898 7.632769 1564.324463", "123.899956 90.000000 0.000000", 1);
+SpawnObject("Mag_SV98_10Rnd", "7555.767090 7.130080 1563.752441", "180.000000 90.000000 180.000000", 1);
+SpawnObject("Mag_SV98_10Rnd", "7555.780762 7.130080 1563.973999", "155.699448 90.000000 180.000000", 1);
+SpawnObject("Mag_SV98_10Rnd", "7555.644531 7.130080 1563.902466", "31.100155 90.000000 0.000000", 1);
+SpawnObject("Mag_SV98_10Rnd", "7555.765137 7.130080 1564.296265", "-99.500015 90.000000 0.000000", 1);
+SpawnObject("MK4Optic_Black", "7562.437500 7.498983 1566.554077", "150.699982 90.000000 180.000000", 1);
+SpawnObject("MK4Optic_Black", "7562.698242 7.498983 1566.558350", "169.099991 90.000000 180.000000", 1);
+
+
+// Uncomment if you want to export loot from newly added buildings
+// Position, Radius (increase if you have a larger map than Chernarus)
+// GetCEApi().ExportProxyData(Vector(7500, GetGame().SurfaceY(7500, 7500), 7500), 20000);
