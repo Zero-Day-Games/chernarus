@@ -11,19 +11,12 @@
         <delay>5</delay>
         <onconnect>1</onconnect>
         <repeat>15</repeat>
-        <text>Rules quick start: Military is KOS. Elsewhere: gun in hand is fair game; unarmed needs verbal interaction. Stalking or ambushing heavily geared players is allowed everywhere.</text>
-    </message>
-    <message>
-        <delay>7</delay>
-        <onconnect>1</onconnect>
-        <repeat>15</repeat>
-        <text>Rule disputes: Clip PvP rule breaks. No video means no action.</text>
-    </message>
-    <message>
-        <delay>9</delay>
-        <onconnect>1</onconnect>
-        <repeat>15</repeat>
-        <text>Raid Weekends are Fri 5PM PST to Sun 5PM PST. NO base damage or theft is allowed during non raid times.</text>
+        <text>
+            Rules quick start: Military is KOS. Elsewhere: gun in hand is fair game; unarmed needs verbal interaction.
+            Stalking or ambushing heavily geared players is allowed everywhere.
+            Rule disputes: Clip PvP rule breaks. No video means no action.
+            Raid Weekends are Fri 5PM PST to Sun 5PM PST. NO base damage or theft is allowed during non raid times.
+        </text>
     </message>
 
     <!-- Reboot notice -->
