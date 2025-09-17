@@ -108,7 +108,7 @@
 	},
 	"MapData":
 	{
-		"ignoreMapOwnership": false,
+		"ignoreMapOwnership": true,
 		"ignoreNavItemsOwnership": true,
 		"displayPlayerPosition": true,
 		"displayNavInfo": true
