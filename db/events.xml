@@ -1176,9 +1176,9 @@
         </children>
     </event>
     <event name="VehicleTruck01">
-        <nominal>20</nominal>
-        <min>20</min>
-        <max>20</max>
+        <nominal>50</nominal>
+        <min>50</min>
+        <max>100</max>
         <lifetime>300</lifetime>
         <restock>0</restock>
         <saferadius>500</saferadius>
@@ -1189,9 +1189,9 @@
         <limit>mixed</limit>
         <active>1</active>
         <children>
-            <child lootmax="0" lootmin="0" max="5" min="3" type="Truck_01_Covered"/>
-            <child lootmax="0" lootmin="0" max="5" min="3" type="Truck_01_Covered_Blue"/>
-            <child lootmax="0" lootmin="0" max="5" min="3" type="Truck_01_Covered_Orange"/>
+            <child lootmax="0" lootmin="0" max="50" min="3" type="Truck_01_Covered"/>
+            <child lootmax="0" lootmin="0" max="50" min="3" type="Truck_01_Covered_Blue"/>
+            <child lootmax="0" lootmin="0" max="50" min="3" type="Truck_01_Covered_Orange"/>
         </children>
     </event>
 </events>

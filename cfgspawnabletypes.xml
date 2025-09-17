@@ -4203,6 +4203,9 @@
 		<attachments chance="1.00">
 			<item name="Flag_White" chance="1.0" />
 		</attachments>
+		<attachments chance="1.00">
+			<item name="HandSaw" chance="1.0" />
+		</attachments>
 	</type>
 	<type name="Truck_01_Covered_Blue">
 		<attachments chance="1.00">
@@ -4394,6 +4397,9 @@
 		<attachments chance="1.00">
 			<item name="Flag_White" chance="1.0" />
 		</attachments>
+		<attachments chance="1.00">
+			<item name="HandSaw" chance="1.0" />
+		</attachments>
 	</type>
 	<type name="Truck_01_Covered_Orange">
 		<attachments chance="1.00">
@@ -4584,6 +4590,9 @@
 		</attachments>
 		<attachments chance="1.00">
 			<item name="Flag_White" chance="1.0" />
+		</attachments>
+		<attachments chance="1.00">
+			<item name="HandSaw" chance="1.0" />
 		</attachments>
 	</type>
 <!--
