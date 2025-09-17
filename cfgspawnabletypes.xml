@@ -14,6 +14,96 @@
 	<type name="PunchedCard">
 		<damage min="0.8" max="0.8" />
 	</type>
+	<type name="Flashlight">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="UniversalLight">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="TLRLight">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="Headtorch_Black">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="Headtorch_Grey">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="Rangefinder">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="Megaphone">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="FNP45_MRDSOptic">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="M68Optic">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="M4_T3NRDSOptic">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="KobraOptic">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="ReflexOptic">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="PSO1Optic">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="PSO11Optic">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="Mk4Optic_Black">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="Mk4Optic_Green">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="Mk4Optic_Tan">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
+	<type name="SportingOptic">
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
+	</type>
 	<type name="Barrel_Blue">
 		<hoarder />
 	</type>
@@ -69,15 +159,21 @@
 		
 	</type>
 	<type name="NVGoggles">
-		
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
 	</type>
 	
 	<type name="KazuarOptic">
-		
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
 	</type>
 	
 	<type name="StarlightOptic">
-		
+		<attachments chance="1.0">
+			<item name="Battery9v" chance="1.0" />
+		</attachments>
 	</type>
 	
 	<type name="AugOptic">
@@ -2897,12 +2993,12 @@
 -->
 	<!--  END OF WEAPONS  -->
 	<type name="PersonalRadio">
-		<attachments chance="0.30">
+		<attachments chance="1.0">
 			<item name="Battery9V" chance="1.00" />
 		</attachments>
 	</type>
 	<type name="GPSReceiver">
-		<attachments chance="0.30">
+		<attachments chance="1.0">
 			<item name="Battery9V" chance="1.00" />
 		</attachments>
 	</type>
