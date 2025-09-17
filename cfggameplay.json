@@ -58,7 +58,8 @@
 	{
 		"lightingConfig": 0,
 		"objectSpawnersArr": [
-			"./custom/biathlon-bunker.json"
+			"./custom/biathlon-bunker.json",
+			"./custom/biathlon-military.json"
 		],
 		"playerRestrictedAreaFiles": [
 			"./custom/biathlon-bunker-safe-spawn.json"
