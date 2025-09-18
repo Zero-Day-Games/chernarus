@@ -58,6 +58,7 @@
 	{
 		"lightingConfig": 0,
 		"objectSpawnersArr": [
+			"./custom/DayZSentinel_Shop.json",
 			"./custom/biathlon-bunker.json",
 			"./custom/biathlon-military.json",
 			"./custom/novy-sobor-trader.json"
