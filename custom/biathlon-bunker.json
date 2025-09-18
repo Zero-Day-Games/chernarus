@@ -577,22 +577,6 @@
             "customString": ""
         },
         {
-            "name": "PunchedCard",
-            "pos": [
-                511.91656494140627,
-                421.9407043457031,
-                11091.0166015625
-            ],
-            "ypr": [
-                179.99754333496095,
-                89.90108489990235,
-                179.99989318847657
-            ],
-            "scale": 0.9998185038566589,
-            "enableCEPersistency": 0,
-            "customString": ""
-        },
-        {
             "name": "Land_Underground_WaterMaintenance",
             "pos": [
                 504.22198486328127,
